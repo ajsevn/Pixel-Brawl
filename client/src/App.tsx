@@ -19,6 +19,10 @@ function App() {
       setPlayers(players);
     });
 
+    socket.on("updatePlayers", (updatedPlayers) => {
+      setPlayers(updatedPlayers);
+    });
+
     socket.on("playerJoined", ({ id, player }) => {
       joinSound.play();
       setPlayers(p => ({ ...p, [id]: player }));
